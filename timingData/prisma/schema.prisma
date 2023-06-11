@@ -1,0 +1,28 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model timeCounter {
+  idTime      Int     @id @default(autoincrement())
+  timeCounter String  @db.Char(200)
+  comment     String? @db.VarChar(200)
+  userId      Int?
+  user        user?   @relation(fields: [userId], references: [userId], onDelete: Restrict, onUpdate: Restrict, map: "timeCounter_ibfk_2")
+
+  @@index([userId], map: "userId")
+}
+
+model user {
+  userId      Int           @id @default(autoincrement())
+  username    String        @db.Char(200)
+  password    String        @db.Char(200)
+  number      String        @default("113") @db.Char(20)
+  dateSignUp  String        @default("21/11/2003") @db.Char(50)
+  name        String        @default("") @db.VarChar(200)
+  timeCounter timeCounter[]
+}
