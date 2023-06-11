@@ -3,22 +3,22 @@ const  successCode = (res,message, data) => {
         statusCode: 200 , 
         message: message ,  
         data: data  , 
-        date: Date.now() 
+        date: new Date() 
     })
 }
-const  errorCode = (res,message) => {
+const  errorCode = (res,message, data ) => {
     res.status(400).json({
         statusCode: 400 , 
         message: message ,  
         data: null  , 
-        date: Date.now() 
+        date: new Date() 
     })
 }
 const  failureCode = (res) => {
     res.status(500).json({
         statusCode: 500 , 
         message: "BackEnd error!" ,  
-        date: Date.now() 
+        date: new Date() 
     })
 }
 
