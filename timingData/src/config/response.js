@@ -7,10 +7,10 @@ const  successCode = (res,message, data) => {
     })
 }
 const  errorCode = (res,message, data ) => {
-    res.status(400).json({
+    res.status(404).json({
         statusCode: 400 , 
         message: message ,  
-        data: null  , 
+        data: data  , 
         date: new Date() 
     })
 }
