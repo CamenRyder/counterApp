@@ -14,7 +14,7 @@ const { PrismaClient  } = require('@prisma/client')
                             username,  password  
                         }})
                         if(isPassword) {
-                            successCode(res, "login success", data) ;
+                            successCode(res, "login success", isPassword) ;
                         }else errorCode(res, "password wrong?", data) ;  
                 }else errorCode(res, "username not already!" ,  data );       
                 

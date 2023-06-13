@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class BG_login extends StatelessWidget {
+  const BG_login({super.key});
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build

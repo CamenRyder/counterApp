@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:timeing/PAGE/loginPage.dart';
+import 'package:timeing/page/loginPage.dart';
+import 'package:timeing/service/userService.dart';
 
-import 'BackGround/backgroundLogin.dart';
 
 void main() {
-  runApp(MyApp());
+  callApiTest();   
+  runApp(const MyApp());
+}
+
+Future<void> callApiTest() async {
+  UseService user = UseService();  
+   user.loginUser(username: 'mhieusz.23.dkc@gmai.com',  password: 'minhhieu2003');
 }
 
 class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
@@ -19,8 +27,6 @@ class _MyApp extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return MaterialApp(
-      home: LoginPage()
-    );
+    return const MaterialApp(home: LoginPage());
   }
 }

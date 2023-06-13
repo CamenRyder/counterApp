@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import '../BackGround/backgroundLogin.dart';
 
 class LoginPage extends StatefulWidget{
+  const LoginPage({super.key});
+
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
@@ -28,7 +29,7 @@ class _LoginPage extends State<LoginPage>{
           ),
           body: Stack(
             children: [
-              BG_login(),
+              const BG_login(),
               SafeArea(
                   minimum: const EdgeInsets.all(10),
                   child: Center(
@@ -37,7 +38,7 @@ class _LoginPage extends State<LoginPage>{
                     child: Column(
                       children: [
                         Container(
-                          padding: EdgeInsets.all(10),
+                          padding: const EdgeInsets.all(10),
                           child: TextField(
                             decoration: InputDecoration(
                                 alignLabelWithHint: true,
@@ -52,7 +53,7 @@ class _LoginPage extends State<LoginPage>{
                           ),
                         ),
                         Container(
-                          padding: EdgeInsets.all(10),
+                          padding: const EdgeInsets.all(10),
                           child: TextField(
                             decoration: InputDecoration(
                                 alignLabelWithHint: true,
@@ -68,12 +69,12 @@ class _LoginPage extends State<LoginPage>{
                         ),
                         Container(
                           alignment: Alignment.centerRight,
-                          margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
+                          margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
                           child: SizedBox(
                             width: 120,
                             child: ElevatedButton(
                                 onPressed: () {},
-                                child: Text(
+                                child: const Text(
                                   'login',
                                   style: TextStyle(
                                       fontSize: 14,
