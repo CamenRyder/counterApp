@@ -13,14 +13,17 @@ class LoginState extends Equatable {
   final FormzSubmissionStatus status;
   final bool isValid;
 
-  LoginState copytWith(FormzSubmissionStatus? status, String? username,
-      String? password, bool isValid) {
+  LoginState copytWith({FormzSubmissionStatus? status, String? username,
+      String? password, bool? isValid}) {
     return LoginState(
-      
+      status: status ?? this.status,
+      username: username ?? this.username,
+      password: password ?? this.password,
+      isValid: isValid ?? this.isValid,
     );
   }
 
   @override
   // TODO: implement props
-  List<Object?> get props => [username, password, status, isValid];
+  List<Object?> get props => [username, password, status];
 }

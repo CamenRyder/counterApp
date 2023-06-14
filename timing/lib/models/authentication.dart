@@ -26,6 +26,7 @@ class AuthenticationRes {
         _controller.add(AuthenticationStatus.authenticated) 
       }else _controller.add(AuthenticationStatus.unauthenticated) 
     } ) ;
+    
   }
     void logOut() {
     _controller.add(AuthenticationStatus.unauthenticated);
