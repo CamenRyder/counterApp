@@ -41,6 +41,7 @@ class _AppView extends State<AppView> {
                 break;
             }
           },
+          child: child,
         );
       },
       onGenerateRoute: (_) => SplashPage.route() 

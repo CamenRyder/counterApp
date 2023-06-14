@@ -7,8 +7,9 @@ enum AuthenticationStatus { unknown, unauthenticated, authenticated }
 class AuthenticationRes {
   final _controller = StreamController<AuthenticationStatus>();
   late final UseService useService;
+
   Stream<AuthenticationStatus> get status async* {
-    await Future<void>.delayed(const Duration(milliseconds: 1000));
+    await Future<void>.delayed(const Duration(seconds: 1));
     yield AuthenticationStatus.unauthenticated;
     yield* _controller.stream;
   }
@@ -18,10 +19,9 @@ class AuthenticationRes {
     required String password,
   }) async {
     useService = UseService();
-    Map data = useService.loginUser(username: username, password: password) as Map;
-
-    await Future<void>.delayed(Duration(microseconds: 300), () => {
-      if(data['statusCode'] == 200) 
+    final  data = useService.loginUser(username: username, password: password) ;
+    await Future<void>.delayed(Duration(microseconds: 400), () => {
+      if(data == 200 ) 
       {
         _controller.add(AuthenticationStatus.authenticated) 
       }else _controller.add(AuthenticationStatus.unauthenticated) 

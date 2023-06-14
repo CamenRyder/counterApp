@@ -3,8 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:timeing/blocs/authentication/authenBloc.dart';
 import 'package:timeing/models/authentication.dart';
 import 'package:timeing/page/appView.dart';
-import 'package:timeing/page/loginPage.dart';
-import 'package:timeing/page/splashPage.dart';
+
 
 void main() {
   // callApiTest();
