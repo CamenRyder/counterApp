@@ -5,6 +5,10 @@ import '../BackGround/backgroundLogin.dart';
 class LoginPage extends StatefulWidget{
   const LoginPage({super.key});
 
+  static Route<void> route() {
+    return MaterialPageRoute(builder:(context) =>  LoginPage(),) ;
+  }
+
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState

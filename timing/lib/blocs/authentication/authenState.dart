@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:timeing/models/authentication.dart';
-import 'package:timeing/models/user.dart';
+
 
 class AuthenticateState extends Equatable {
   const AuthenticateState._(

@@ -5,14 +5,13 @@ import 'package:timeing/blocs/authentication/authenEvent.dart';
 import 'package:timeing/blocs/authentication/authenState.dart';
 import 'package:timeing/models/authentication.dart';
 
-import '../../models/user.dart';
-import '../../service/userService.dart';
+
+
 
 class AuthenticateBloc extends Bloc<AuthenticateEvent, AuthenticateState> {
   AuthenticateBloc(
-      {required AuthenticationRes authenticationRes, required UseService user})
+      {required AuthenticationRes authenticationRes})
       : _authenRes = authenticationRes,
-        _user = user,
         super(const AuthenticateState.unknown()) {
     on<AuthenticateChangedLogin>(_onAuthenticateChangedLogin);
     on<AuthenticateChangedLogout>(_onAuthenticateChangedLogout);
@@ -21,7 +20,7 @@ class AuthenticateBloc extends Bloc<AuthenticateEvent, AuthenticateState> {
   }
 
   final AuthenticationRes _authenRes;
-  final UseService _user;
+
 
   late StreamSubscription<AuthenticationStatus> _controller;
 
