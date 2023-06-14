@@ -19,8 +19,8 @@ class AuthenticationRes {
     required String password,
   }) async {
     useService = UseService();
-    final  data = useService.loginUser(username: username, password: password) ;
-    await Future<void>.delayed(Duration(microseconds: 400), () => {
+    final  data = await useService.loginUser(username: username, password: password) ;
+    await Future<void>.delayed(Duration(seconds: 1), () => {
       if(data == 200 ) 
       {
         _controller.add(AuthenticationStatus.authenticated) 
