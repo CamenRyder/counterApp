@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formz/formz.dart';
+import 'package:timeing/blocs/login/loginBloc.dart';
+import 'package:timeing/blocs/login/loginState.dart';
+import 'package:timeing/models/authentication.dart';
 
 import '../BackGround/backgroundLogin.dart';
+import '../page/componnent.dart';
 
 class LoginPage extends StatefulWidget{
   const LoginPage({super.key});
@@ -31,7 +37,30 @@ class _LoginPage extends State<LoginPage>{
                   color: Colors.white),
             ),
           ),
-          body: Stack(
+          body: BlocProvider(create: ((context) {
+              return LoginBloc(authenRes: RepositoryProvider.of<AuthenticationRes>(context)) ;
+          }),
+          child: LoginForm(),
+          ) ); 
+  }
+
+}
+
+class LoginForm extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return BlocListener<LoginBloc,LoginState>(
+      listener: (context, state) {
+       if (state.status.isFailure) {
+          ScaffoldMessenger.of(context)
+            ..hideCurrentSnackBar()
+            ..showSnackBar(
+              const SnackBar(content: Text('Authentication Failure')),
+            );
+        }
+    },
+    child: Stack(
             children: [
               const BG_login(),
               SafeArea(
@@ -41,56 +70,18 @@ class _LoginPage extends State<LoginPage>{
                     margin: const EdgeInsets.symmetric(vertical: 200),
                     child: Column(
                       children: [
-                        Container(
-                          padding: const EdgeInsets.all(10),
-                          child: TextField(
-                            decoration: InputDecoration(
-                                alignLabelWithHint: true,
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(9),
-                                    gapPadding: 5.0),
-                                labelText: 'username',
-                                labelStyle: const TextStyle(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.bold,
-                                )),
-                          ),
-                        ),
-                        Container(
-                          padding: const EdgeInsets.all(10),
-                          child: TextField(
-                            decoration: InputDecoration(
-                                alignLabelWithHint: true,
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(9),
-                                    gapPadding: 5.0),
-                                labelText: 'password',
-                                labelStyle: const TextStyle(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.bold,
-                                )),
-                          ),
-                        ),
-                        Container(
-                          alignment: Alignment.centerRight,
-                          margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
-                          child: SizedBox(
-                            width: 120,
-                            child: ElevatedButton(
-                                onPressed: () {},
-                                child: const Text(
-                                  'login',
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.bold),
-                                )),
-                          ),
-                        )
+                        UsernameInput(),
+                        PasswordInput(),
+                        ButtonLogin()
                       ],
                     ),
                   )))
             ],
-          ));
+          )
+    );
+
   }
 
 }
+
+

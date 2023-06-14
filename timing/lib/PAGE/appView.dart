@@ -3,6 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:timeing/blocs/authentication/authenBloc.dart';
 import 'package:timeing/blocs/authentication/authenState.dart';
 import 'package:timeing/models/authentication.dart';
+import 'package:timeing/page/counterPage.dart';
+import 'package:timeing/page/loginPage.dart';
+
+import '../PAGE/splashPage.dart';
 
 class AppView extends StatefulWidget {
   @override
@@ -28,14 +32,18 @@ class _AppView extends State<AppView> {
               case AuthenticationStatus.unknown:
                 break;
               case AuthenticationStatus.unauthenticated:
-                
+                _navigator.pushAndRemoveUntil<void>(
+                    LoginPage.route(), (route) => false);
                 break;
               case AuthenticationStatus.authenticated:
+                _navigator.pushAndRemoveUntil<void>(
+                    CounterPage.route(), (route) => false); 
                 break;
             }
           },
         );
       },
+      onGenerateRoute: (_) => SplashPage.route() 
     );
   }
 }
