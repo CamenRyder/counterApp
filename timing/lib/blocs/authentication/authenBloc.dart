@@ -14,9 +14,10 @@ class AuthenticateBloc extends Bloc<AuthenticateEvent, AuthenticateState> {
       : _authenRes = authenticationRes,
         _user = user,
         super(const AuthenticateState.unknown()) {
-    on<AuthenticateChangedLogin>();
-    on<AuthenticateChangedLogout>();
-    _controller = _authenRes.status.listen((status) => add(AuthenticateChangedLogin(status))) 
+    on<AuthenticateChangedLogin>(_onAuthenticateChangedLogin);
+    on<AuthenticateChangedLogout>(_onAuthenticateChangedLogout);
+    _controller = _authenRes.status
+        .listen((status) => add(AuthenticateChangedLogin(status)));
   }
 
   final AuthenticationRes _authenRes;
@@ -24,36 +25,27 @@ class AuthenticateBloc extends Bloc<AuthenticateEvent, AuthenticateState> {
 
   late StreamSubscription<AuthenticationStatus> _controller;
 
-
   @override
   Future<void> close() {
     // TODO: implement close
-    _controller.cancel() ;  
+    _controller.cancel();
     return super.close();
   }
 
   Future<void> _onAuthenticateChangedLogin(
-    AuthenticateChangedLogin event ,  
-    Emitter<AuthenticateState> emit) async {
-      switch( event.status) {
-        case AuthenticationStatus.authenticated : 
-        final 
-          emit( state.user != null )
-
-        case AuthenticationStatus.unauthenticated : 
-          emit(AuthenticateState.unauthenticated()) ;  
-
-        case AuthenticationStatus.unknown:
-      }
+      AuthenticateChangedLogin event, Emitter<AuthenticateState> emit) async {
+    switch (event.status) {
+      case AuthenticationStatus.authenticated:
+        emit(AuthenticateState.authenticated());
+      case AuthenticationStatus.unauthenticated:
+        emit(AuthenticateState.unauthenticated());
+      case AuthenticationStatus.unknown:
+        emit(AuthenticateState.unknown());
+    }
   }
 
-  Future<User> _getUser() async {
-      try{
-            var user = _user.getUser(username: username, password: password) ;   
-      }catch(_) {
-
-      }
-  } 
-
-  
+  void _onAuthenticateChangedLogout(
+      AuthenticateEvent event, Emitter<AuthenticateState> emit) {
+    _authenRes.logOut();
+  }
 }
