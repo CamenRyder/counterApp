@@ -104,6 +104,7 @@ class ButtonLogin extends StatelessWidget {
           margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
           child: SizedBox(
             width: 120,
+            height: 35,
             child: ElevatedButton(
                 style: ButtonStyle(
                   backgroundColor:
@@ -127,5 +128,46 @@ class ButtonLogin extends StatelessWidget {
         );
       },
     );
+  }
+}
+
+class ForgotAndSignUp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Expanded(
+        child: Align(
+            alignment: FractionalOffset.bottomCenter,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                MaterialButton(
+                  onPressed: () {},
+                  child: Text(
+                    'forgot password?',
+                    style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w300,
+                        color: Color.fromARGB(255, 151, 112, 48)),
+                  ),
+                ),
+                Text(
+                  '?',
+                  style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w300,
+                      color: Color.fromARGB(255, 151, 112, 48)),
+                ),
+                MaterialButton(
+                    onPressed: () {},
+                    child: const Text(
+                      'SignUp',
+                      style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w300,
+                          color: Color.fromARGB(255, 151, 112, 48)),
+                    )),
+              ],
+            )));
   }
 }

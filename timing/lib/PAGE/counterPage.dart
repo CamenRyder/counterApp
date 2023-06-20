@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:timeing/blocs/counter/counterBloc.dart';
@@ -69,7 +67,7 @@ class CounterPage extends StatelessWidget {
                                             TimeStartEvent(
                                                 duration: state.duration));
                                       },
-                                      child:  Icon(
+                                      child: Icon(
                                         Icons.play_arrow,
                                         size: 44,
                                         color: Color.fromARGB(255, 174, 147, 8),
@@ -175,7 +173,8 @@ class CounterPage extends StatelessWidget {
                               ],
                             );
                           },
-                        ))
+                        )),
+                    
                   ],
                 ),
               ],

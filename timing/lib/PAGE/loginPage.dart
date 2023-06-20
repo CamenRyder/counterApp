@@ -67,14 +67,20 @@ class LoginForm extends StatelessWidget {
           children: [
             const BG_login(),
             SafeArea(
-                minimum: const EdgeInsets.all(10),
-                child: Center(
-                    child: Container(
-                  margin: const EdgeInsets.symmetric(vertical: 200),
-                  child: Column(
-                    children: [UsernameInput(), PasswordInput(), ButtonLogin()],
+              minimum: EdgeInsets.all(5),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    height: 180,
                   ),
-                )))
+                  UsernameInput(),
+                  PasswordInput(),
+                  ButtonLogin(),
+                  ForgotAndSignUp(),
+                ],
+              ),
+            )
           ],
         ));
   }
