@@ -69,7 +69,7 @@ class CounterPage extends StatelessWidget {
                                             TimeStartEvent(
                                                 duration: state.duration));
                                       },
-                                      child: Icon(
+                                      child:  Icon(
                                         Icons.play_arrow,
                                         size: 44,
                                         color: Color.fromARGB(255, 174, 147, 8),

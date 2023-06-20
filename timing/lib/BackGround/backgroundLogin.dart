@@ -9,10 +9,10 @@ class BG_login extends StatelessWidget {
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
-            gradient: LinearGradient(
-                colors: [Colors.blueGrey, Colors.white60],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter)),
+            gradient: LinearGradient(colors: [
+          Color.fromARGB(255, 91, 22, 17),
+          Color.fromARGB(255, 112, 16, 10)
+        ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
       ),
     );
   }
@@ -30,6 +30,6 @@ class BG_counter extends StatelessWidget {
         Color.fromARGB(255, 91, 22, 17),
         Color.fromARGB(255, 112, 16, 10)
       ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
-    );  
+    );
   }
 }
