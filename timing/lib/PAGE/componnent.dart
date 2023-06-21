@@ -2,8 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formz/formz.dart';
 import 'package:timeing/blocs/login/loginEvent.dart';
 import 'package:timeing/blocs/login/loginState.dart';
+import 'package:timeing/page/splashPage.dart';
 
 import '../blocs/login/loginBloc.dart';
 
@@ -118,6 +120,17 @@ class ButtonLogin extends StatelessWidget {
     // TODO: implement build
     return BlocBuilder<LoginBloc, LoginState>(
       builder: (context, state) {
+        if (state.status.isInProgress) {
+          return Container(
+              padding: EdgeInsets.all(20),
+              child: Center(
+                  child: SizedBox(
+                      height: 30,
+                      width: 30,
+                      child: CircularProgressIndicator(
+                        color: Color.fromARGB(255, 151, 112, 48),
+                      ))));
+        }
         return Container(
           alignment: Alignment.centerRight,
           margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
@@ -134,9 +147,9 @@ class ButtonLogin extends StatelessWidget {
                 onPressed: state.isValid
                     ? () {
                         context.read<LoginBloc>().add(OnSubbmited());
-                        Future.delayed(Duration(seconds: 1), (){ 
-                                   _controller1.clear();  
-                        _controller2.clear(); 
+                        Future.delayed(Duration(seconds: 1), () {
+                          _controller1.clear();
+                          _controller2.clear();
                         });
                       }
                     : null,

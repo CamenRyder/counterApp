@@ -24,7 +24,7 @@ class AuthenticationRes {
       if(data == 200 ) 
       {
         _controller.add(AuthenticationStatus.authenticated) 
-      }else _controller.add(AuthenticationStatus.unauthenticated) 
+      }else if(data == 404) _controller.add(AuthenticationStatus.unauthenticated) 
     } ) ;
     
   }
