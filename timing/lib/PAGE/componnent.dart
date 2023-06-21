@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:timeing/blocs/login/loginEvent.dart';
 import 'package:timeing/blocs/login/loginState.dart';
-import 'package:timeing/page/splashPage.dart';
+
 
 import '../blocs/login/loginBloc.dart';
 

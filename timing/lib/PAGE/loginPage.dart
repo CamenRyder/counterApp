@@ -52,22 +52,23 @@ class _LoginPage extends State<LoginPage> {
 }
 
 class LoginForm extends StatelessWidget {
-  var _cl1 = TextEditingController();
-  var _cl2 = TextEditingController();
+ final  _cl1 = TextEditingController();
+  final _cl2 = TextEditingController();
   LoginForm(
       {required TextEditingController cl1, required TextEditingController cl2});
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return BlocListener<LoginBloc, LoginState>(
         listener: (context, state) {
           if (state.status.isFailure) {
             ScaffoldMessenger.of(context)
               ..hideCurrentSnackBar()
               ..showSnackBar(
-                const SnackBar(content: Text('Authentication Failure')),
+                const SnackBar(content: Text('Something is well play?'),duration: Duration(milliseconds: 300),),
               );
+
+
           }
         },
         child: Stack(

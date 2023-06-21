@@ -15,21 +15,25 @@ class AuthenticationRes {
     yield* _controller.stream;
   }
 
-  Future<void> login({
+  Future<int> login({
     required String username,
     required String password,
   }) async {
     useService = UseService();
-    final  data = await useService.loginUser(username: username, password: password) ;
-    await Future<void>.delayed(Duration(milliseconds: Random().nextInt(4000)+1000), () => {
-      if(data == 200 ) 
-      {
-        _controller.add(AuthenticationStatus.authenticated) 
-      }else if(data == 404) _controller.add(AuthenticationStatus.unauthenticated) 
-    } ) ;
-    
+    final data =
+        await useService.loginUser(username: username, password: password);
+    await Future<void>.delayed(
+        Duration(milliseconds: Random().nextInt(4000) + 1000),
+        () => {
+              if (data == 200)
+                {_controller.add(AuthenticationStatus.authenticated)}
+              else if (data == 404)
+                {_controller.add(AuthenticationStatus.unauthenticated)}
+            });
+    return data == 200 ? 1 : 0;   
   }
-    void logOut() {
+
+  void logOut() {
     _controller.add(AuthenticationStatus.unauthenticated);
   }
 

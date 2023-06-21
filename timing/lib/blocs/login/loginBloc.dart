@@ -28,13 +28,18 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     if (state.isValid) {
       emit(state.copytWith(status: FormzSubmissionStatus.inProgress,
       ));
-      try {
-        await _authenRes.login(
+      // try {
+       int value =  await _authenRes.login(
             username: state.username, password: state.password);
+            if(value== 1) {
         emit(state.copytWith(status: FormzSubmissionStatus.success)); 
-      } catch (_) {
-        emit(state.copytWith(status: FormzSubmissionStatus.failure));
-      }
+            }else if (value == 0)  {
+        emit(state.copytWith(status: FormzSubmissionStatus.failure, isValid: false, username: '',password: '')); 
+            }
+      // } catch (_) {
+      //   emit(state.copytWith(status: FormzSubmissionStatus.failure, isValid: false, username: '',));
+
+      // }
     }
   }
 }
