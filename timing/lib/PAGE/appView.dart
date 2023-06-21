@@ -36,12 +36,13 @@ class _AppView extends State<AppView> {
                       LoginPage.route(), (route) => false);
                   break;
                 case AuthenticationStatus.authenticated:
-                   Future<void>.delayed(Duration(seconds: 2), () {
-                    _navigator.pushAndRemoveUntil<void>(
+                  //  Future<void>.delayed(Duration(seconds: 2), () {
+                   
+                  // });
+                  // _navigator.pushAndRemoveUntil<void>(
+                  //     SplashPage.route(), (route) => false);
+                   _navigator.pushAndRemoveUntil<void>(
                         CounterPage.route(), (route) => false); 
-                  });
-                  _navigator.pushAndRemoveUntil<void>(
-                      SplashPage.route(), (route) => false);
                   break;
               }
             },

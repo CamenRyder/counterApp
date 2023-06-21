@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:timeing/service/userService.dart';
 
@@ -20,7 +21,7 @@ class AuthenticationRes {
   }) async {
     useService = UseService();
     final  data = await useService.loginUser(username: username, password: password) ;
-    await Future<void>.delayed(Duration(seconds: 1), () => {
+    await Future<void>.delayed(Duration(milliseconds: Random().nextInt(4000)+1000), () => {
       if(data == 200 ) 
       {
         _controller.add(AuthenticationStatus.authenticated) 
