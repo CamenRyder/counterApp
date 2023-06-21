@@ -25,6 +25,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPage extends State<LoginPage> {
+  var cl1 = TextEditingController();
+  var cl2 = TextEditingController();
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -44,12 +46,17 @@ class _LoginPage extends State<LoginPage> {
             return LoginBloc(
                 authenRes: RepositoryProvider.of<AuthenticationRes>(context));
           }),
-          child: LoginForm(),
+          child: LoginForm(cl1: cl1, cl2: cl2,),
         ));
   }
 }
 
 class LoginForm extends StatelessWidget {
+  var _cl1 = TextEditingController();
+  var _cl2 = TextEditingController();
+  LoginForm(
+      {required TextEditingController cl1, required TextEditingController cl2});
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -74,9 +81,9 @@ class LoginForm extends StatelessWidget {
                   Container(
                     height: 180,
                   ),
-                  UsernameInput(),
-                  PasswordInput(),
-                  ButtonLogin(),
+                  UsernameInput(controller: _cl1),
+                  PasswordInput(controller: _cl2,),
+                  ButtonLogin(controller1: _cl1,controller2:  _cl2,) ,
                   ForgotAndSignUp(),
                 ],
               ),

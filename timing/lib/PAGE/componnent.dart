@@ -8,6 +8,11 @@ import 'package:timeing/blocs/login/loginState.dart';
 import '../blocs/login/loginBloc.dart';
 
 class UsernameInput extends StatelessWidget {
+  // ignore: use_key_in_widget_constructors
+  UsernameInput({required TextEditingController controller}) {
+    _controller01 = controller;
+  }
+  late TextEditingController _controller01;
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -16,6 +21,7 @@ class UsernameInput extends StatelessWidget {
         return Container(
           padding: const EdgeInsets.all(10),
           child: TextField(
+            controller: _controller01,
             onChanged: (username) => context
                 .read<LoginBloc>()
                 .add(OnUsernameEvent(username: username)),
@@ -51,6 +57,10 @@ class UsernameInput extends StatelessWidget {
 }
 
 class PasswordInput extends StatelessWidget {
+  PasswordInput({required TextEditingController controller}) {
+    _controller02 = controller;
+  }
+  late TextEditingController _controller02;
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -59,6 +69,7 @@ class PasswordInput extends StatelessWidget {
         return Container(
           padding: const EdgeInsets.all(10),
           child: TextField(
+            controller: _controller02,
             onChanged: (password) => context
                 .read<LoginBloc>()
                 .add(OnPasswordEvent(password: password)),
@@ -94,6 +105,14 @@ class PasswordInput extends StatelessWidget {
 }
 
 class ButtonLogin extends StatelessWidget {
+  var _controller1 = TextEditingController();
+  var _controller2 = TextEditingController();
+  ButtonLogin(
+      {required TextEditingController controller1,
+      required TextEditingController controller2}) {
+    _controller1 = controller1;
+    _controller2 = controller2;
+  }
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -115,6 +134,10 @@ class ButtonLogin extends StatelessWidget {
                 onPressed: state.isValid
                     ? () {
                         context.read<LoginBloc>().add(OnSubbmited());
+                        Future.delayed(Duration(seconds: 1), (){ 
+                                   _controller1.clear();  
+                        _controller2.clear(); 
+                        });
                       }
                     : null,
                 child: const Text(

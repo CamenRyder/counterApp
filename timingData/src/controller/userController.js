@@ -18,7 +18,7 @@ const { PrismaClient  } = require('@prisma/client')
                         }else errorCode(res, "password wrong?", data) ;  
                 }else errorCode(res, "username not already!" ,  data );       
                 
-            }catch(err)
+            }catch(err) 
             {
                 failureCode(res); 
             }

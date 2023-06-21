@@ -12,9 +12,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     on<OnPasswordEvent>(_onPasswordChanged);
     on<OnSubbmited>(_onSubmitted);
   }
-
   final AuthenticationRes _authenRes;
-
   void _onUsernameChanged(OnUsernameEvent event, Emitter<LoginState> emit) {
     var username = event.username;
     emit(state.copytWith(
@@ -22,14 +20,11 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
        isValid: (state.password == '' || username == '') ? false : true
     ));
   }
-
   void _onPasswordChanged(OnPasswordEvent event, Emitter<LoginState> emit) {
     var password = event.password;
     emit(state.copytWith(password: password , isValid: (password == '' || state.username == '') ? false : true));
   }
-
   Future<void> _onSubmitted(OnSubbmited event, Emitter<LoginState> emit) async {
-
     if (state.isValid) {
       emit(state.copytWith(status: FormzSubmissionStatus.inProgress,
       ));
