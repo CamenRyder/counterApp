@@ -46,13 +46,16 @@ class _LoginPage extends State<LoginPage> {
             return LoginBloc(
                 authenRes: RepositoryProvider.of<AuthenticationRes>(context));
           }),
-          child: LoginForm(cl1: cl1, cl2: cl2,),
+          child: LoginForm(
+            cl1: cl1,
+            cl2: cl2,
+          ),
         ));
   }
 }
 
 class LoginForm extends StatelessWidget {
- final  _cl1 = TextEditingController();
+  final _cl1 = TextEditingController();
   final _cl2 = TextEditingController();
   LoginForm(
       {required TextEditingController cl1, required TextEditingController cl2});
@@ -62,11 +65,21 @@ class LoginForm extends StatelessWidget {
     return BlocListener<LoginBloc, LoginState>(
         listener: (context, state) {
           if (state.status.isFailure) {
+            _cl1.clear();
+            _cl2.clear();
             ScaffoldMessenger.of(context)
               ..hideCurrentSnackBar()
               ..showSnackBar(
-                const SnackBar(content: Text('Something is well play?'),duration: Duration(milliseconds: 300),),
+                const SnackBar(
+                  content: Text('Something is well play?'),
+                  duration: Duration(milliseconds: 300),
+                ),
               );
+            state.copytWith(
+                status: FormzSubmissionStatus.initial,
+                isValid: false,
+                username: '',
+                password: '');
           }
         },
         child: Stack(
@@ -81,8 +94,13 @@ class LoginForm extends StatelessWidget {
                     height: 180,
                   ),
                   UsernameInput(controller: _cl1),
-                  PasswordInput(controller: _cl2,),
-                  ButtonLogin(controller1: _cl1,controller2:  _cl2,) ,
+                  PasswordInput(
+                    controller: _cl2,
+                  ),
+                  ButtonLogin(
+                    controller1: _cl1,
+                    controller2: _cl2,
+                  ),
                   ForgotAndSignUp(),
                 ],
               ),

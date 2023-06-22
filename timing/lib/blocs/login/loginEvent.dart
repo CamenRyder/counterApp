@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 
 abstract class LoginEvent extends Equatable {
   @override
@@ -23,5 +24,8 @@ class OnPasswordEvent extends LoginEvent {
 }
 
 class OnSubbmited extends LoginEvent {
-   OnSubbmited();  
+ late final TextEditingController cl1;
+ late final TextEditingController cl2;
+  OnSubbmited(
+      {required TextEditingController cl1, required TextEditingController cl2}); 
 }

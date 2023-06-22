@@ -146,11 +146,12 @@ class ButtonLogin extends StatelessWidget {
                 ),
                 onPressed: state.isValid
                     ? () {
-                        context.read<LoginBloc>().add(OnSubbmited());
-                        Future.delayed(Duration(seconds: 1), () {
-                          _controller1.clear();
-                          _controller2.clear();
-                        });
+                        context.read<LoginBloc>().add(OnSubbmited(cl1: _controller1, cl2: _controller2));
+                        // Future.delayed(Duration(seconds: 1), () {
+                        //   _controller1.clear();
+                        //   _controller2.clear();
+                        // });
+
                       }
                     : null,
                 child: const Text(

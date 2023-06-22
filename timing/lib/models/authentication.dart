@@ -27,8 +27,6 @@ class AuthenticationRes {
         () => {
               if (data == 200)
                 {_controller.add(AuthenticationStatus.authenticated)}
-              else if (data == 404)
-                {_controller.add(AuthenticationStatus.unauthenticated)}
             });
     return data == 200 ? 1 : 0;   
   }
