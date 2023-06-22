@@ -67,8 +67,6 @@ class LoginForm extends StatelessWidget {
               ..showSnackBar(
                 const SnackBar(content: Text('Something is well play?'),duration: Duration(milliseconds: 300),),
               );
-
-
           }
         },
         child: Stack(
