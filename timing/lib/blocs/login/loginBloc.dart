@@ -16,6 +16,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   void _onUsernameChanged(OnUsernameEvent event, Emitter<LoginState> emit) {
     var username = event.username;
     emit(state.copytWith(
+        status: FormzSubmissionStatus.initial, // 
         username: username,
         isValid: (state.password == '' || username == '') ? false : true));
   }
@@ -23,6 +24,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   void _onPasswordChanged(OnPasswordEvent event, Emitter<LoginState> emit) {
     var password = event.password;
     emit(state.copytWith(
+      status: FormzSubmissionStatus.initial, //
         password: password,
         isValid: (password == '' || state.username == '') ? false : true));
   }

@@ -71,15 +71,11 @@ class LoginForm extends StatelessWidget {
               ..hideCurrentSnackBar()
               ..showSnackBar(
                 const SnackBar(
-                  content: Text('Something is well play?'),
+                  content: Text('ket noi that bai?'),
                   duration: Duration(milliseconds: 300),
                 ),
               );
-            state.copytWith(
-                status: FormzSubmissionStatus.initial,
-                isValid: false,
-                username: '',
-                password: '');
+           
           }
         },
         child: Stack(

@@ -6,7 +6,6 @@ import 'package:formz/formz.dart';
 import 'package:timeing/blocs/login/loginEvent.dart';
 import 'package:timeing/blocs/login/loginState.dart';
 
-
 import '../blocs/login/loginBloc.dart';
 
 class UsernameInput extends StatelessWidget {
@@ -146,12 +145,12 @@ class ButtonLogin extends StatelessWidget {
                 ),
                 onPressed: state.isValid
                     ? () {
-                        context.read<LoginBloc>().add(OnSubbmited(cl1: _controller1, cl2: _controller2));
+                        context.read<LoginBloc>().add(
+                            OnSubbmited(cl1: _controller1, cl2: _controller2));
                         // Future.delayed(Duration(seconds: 1), () {
                         //   _controller1.clear();
                         //   _controller2.clear();
                         // });
-
                       }
                     : null,
                 child: const Text(
