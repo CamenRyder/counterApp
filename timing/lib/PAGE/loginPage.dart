@@ -1,7 +1,9 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:timeing/blocs/login/loginBloc.dart';
+import 'package:timeing/blocs/login/loginEvent.dart';
 import 'package:timeing/blocs/login/loginState.dart';
 import 'package:timeing/models/authentication.dart';
 
@@ -64,6 +66,7 @@ class LoginForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocListener<LoginBloc, LoginState>(
         listener: (context, state) {
+          print(state.status);
           if (state.status.isFailure) {
             _cl1.clear();
             _cl2.clear();
@@ -71,11 +74,13 @@ class LoginForm extends StatelessWidget {
               ..hideCurrentSnackBar()
               ..showSnackBar(
                 const SnackBar(
-                  content: Text('ket noi that bai?'),
-                  duration: Duration(milliseconds: 300),
+                  content: Text('co gi do khong dung, that bai?'),
+                  duration: Duration(milliseconds: 3500),
                 ),
               );
-           
+            print('adduu ?');
+            context.read<LoginBloc>().add(OnReset());  
+            print('duuu?');
           }
         },
         child: Stack(

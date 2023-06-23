@@ -21,6 +21,15 @@ class LoginState extends Equatable {
       password: password ?? this.password,
       isValid: isValid ?? this.isValid,
     );
+  } 
+
+  LoginState resetFaiure(){
+    return LoginState(
+      status: FormzSubmissionStatus.success ,
+        username:  this.username,
+      password:  this.password,
+      isValid: this.isValid,
+    );
   }
 
   @override

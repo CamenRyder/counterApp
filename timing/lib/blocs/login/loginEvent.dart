@@ -23,9 +23,13 @@ class OnPasswordEvent extends LoginEvent {
   List<Object?> get props => [password];
 }
 
+class OnReset extends LoginEvent{}
+
 class OnSubbmited extends LoginEvent {
  late final TextEditingController cl1;
  late final TextEditingController cl2;
   OnSubbmited(
       {required TextEditingController cl1, required TextEditingController cl2}); 
 }
+
+

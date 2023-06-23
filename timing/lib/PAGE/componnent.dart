@@ -18,6 +18,7 @@ class UsernameInput extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return BlocBuilder<LoginBloc, LoginState>(
+      buildWhen: (previous, current) => previous.password != current.password,
       builder: (context, state) {
         return Container(
           padding: const EdgeInsets.all(10),
@@ -66,6 +67,7 @@ class PasswordInput extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return BlocBuilder<LoginBloc, LoginState>(
+      buildWhen: (previous, current) => previous.password != current.password,
       builder: (context, state) {
         return Container(
           padding: const EdgeInsets.all(10),
@@ -130,6 +132,8 @@ class ButtonLogin extends StatelessWidget {
                         color: Color.fromARGB(255, 151, 112, 48),
                       ))));
         }
+
+
         return Container(
           alignment: Alignment.centerRight,
           margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
@@ -146,7 +150,10 @@ class ButtonLogin extends StatelessWidget {
                 onPressed: state.isValid
                     ? () {
                         context.read<LoginBloc>().add(
-                            OnSubbmited(cl1: _controller1, cl2: _controller2));
+                              OnSubbmited(cl1: _controller1, cl2: _controller2),
+                            );
+                        print(_controller1.value.text);
+                        print(_controller2.value.text);
                         // Future.delayed(Duration(seconds: 1), () {
                         //   _controller1.clear();
                         //   _controller2.clear();
