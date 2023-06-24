@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formz/formz.dart';
 import 'package:timeing/blocs/counter/counterBloc.dart';
 import 'package:timeing/blocs/counter/counterEvent.dart';
 import 'package:timeing/blocs/counter/counterState.dart';
+import 'package:timeing/blocs/login/loginEvent.dart';
+import 'package:timeing/blocs/setting/settingBloc.dart';
+import 'package:timeing/blocs/setting/settingEvent.dart';
+import 'package:timeing/blocs/setting/settingState.dart';
 
 import '../BackGround/backgroundLogin.dart';
 import '../blocs/counter/ticker.dart';
+import '../models/authentication.dart';
 
 class ShowTime extends StatelessWidget {
   @override
@@ -37,96 +43,137 @@ class CounterPage extends StatelessWidget {
         create: (_) => CounterBloc(tick: Tick()),
         child: Scaffold(
             drawer: Drawer(
-              shadowColor: Color.fromARGB(255, 75, 12, 7),
-              backgroundColor: Color.fromARGB(255, 112, 16, 10),
-              child: ListView(
-                children: [
-                  const ListTile(
-                    leading: Icon(
-                      Icons.settings,
-                      size: 30,
-                      color: Color.fromARGB(255, 151, 112, 48),
-                    ),
-                    title: Text(
-                      'Setting',
-                      textDirection: TextDirection.ltr,
-                      style: TextStyle(
-                          fontSize: 28,
-                          fontWeight: FontWeight.bold,
-                          color: Color.fromARGB(255, 151, 112, 48)),
-                    ),
-                  ),
-                  ListTile(
-                    leading: Text(
-                      '-',
-                      style: TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
-                          color: Color.fromARGB(255, 151, 112, 48)),
-                    ),
-                    title: Text(
-                      'My profile',
-                      style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: Color.fromARGB(255, 151, 112, 48)),
-                    ),
-                    onTap: () {},
-                  ),
-                  ListTile(
-                    leading: Text(
-                      '-',
-                      style: TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
-                          color: Color.fromARGB(255, 151, 112, 48)),
-                    ),
-                    title: Text(
-                      'Show current result',
-                      style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: Color.fromARGB(255, 151, 112, 48)),
-                    ),
-                    onTap: () {},
-                  ),
-                  ListTile(
-                    leading: Text(
-                      '-',
-                      style: TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
-                          color: Color.fromARGB(255, 151, 112, 48)),
-                    ),
-                    title: Text(
-                      'Customize time',
-                      style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: Color.fromARGB(255, 151, 112, 48)),
-                    ),
-                    onTap: () {},
-                  ),
-                  ListTile(
-                    leading: Text(
-                      '-',
-                      style: TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
-                          color: Color.fromARGB(255, 151, 112, 48)),
-                    ),
-                    title: Text(
-                      'Logout',
-                      style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: Color.fromARGB(255, 151, 112, 48)),
-                    ),
-                    onTap: () {},
-                  )
-                ],
-              ),
-            ),
+                shadowColor: Color.fromARGB(255, 75, 12, 7),
+                backgroundColor: Color.fromARGB(255, 112, 16, 10),
+                child: BlocProvider(
+                    create: (_) => SettingBloc(
+                        authenRes:
+                            RepositoryProvider.of<AuthenticationRes>(context)),
+                    child: ListView(
+                      children: [
+                        const ListTile(
+                          leading: Icon(
+                            Icons.settings,
+                            size: 30,
+                            color: Color.fromARGB(255, 151, 112, 48),
+                          ),
+                          title: Text(
+                            'Setting',
+                            textDirection: TextDirection.ltr,
+                            style: TextStyle(
+                                fontSize: 28,
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 151, 112, 48)),
+                          ),
+                        ),
+                        BlocBuilder<SettingBloc, SettingState>(
+                          builder: (context, state) {
+                            return ListTile(
+                              leading: Text(
+                                '-',
+                                style: TextStyle(
+                                    fontSize: 30,
+                                    fontWeight: FontWeight.bold,
+                                    color: Color.fromARGB(255, 151, 112, 48)),
+                              ),
+                              title: Text(
+                                'Show Myprofile',
+                                style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                    color: Color.fromARGB(255, 151, 112, 48)),
+                              ),
+                              onTap: () {},
+                            );
+                          },
+                        ),
+                        ListTile(
+                          leading: Text(
+                            '-',
+                            style: TextStyle(
+                                fontSize: 30,
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 151, 112, 48)),
+                          ),
+                          title: Text(
+                            'Show current result',
+                            style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 151, 112, 48)),
+                          ),
+                          onTap: () {},
+                        ),
+                        ListTile(
+                          leading: Text(
+                            '-',
+                            style: TextStyle(
+                                fontSize: 30,
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 151, 112, 48)),
+                          ),
+                          title: Text(
+                            'Customize time',
+                            style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 151, 112, 48)),
+                          ),
+                          onTap: () {},
+                        ),
+                        ListTile(
+                          leading: const Text(
+                            '-',
+                            style: TextStyle(
+                                fontSize: 30,
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 151, 112, 48)),
+                          ),
+                          title: const Text(
+                            'Logout',
+                            style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 151, 112, 48)),
+                          ),
+                          onTap: () {
+                            showDialog(
+                                context: context,
+                                builder: (context) => AlertDialog(
+                                      actions: [
+                                        BlocBuilder<SettingBloc, SettingState>(
+                                            builder: (context, state) {
+                                          if (state.status ==
+                                              FormzSubmissionStatus.initial)
+                                            [
+                                              TextButton(
+                                                  onPressed: () {
+                                                    Navigator.of(context).pop();
+                                                  },
+                                                  child: Text('Cancel')),
+                                              TextButton(
+                                                  onPressed: () {
+                                                    Navigator.of(context).pop();
+                                                    context
+                                                        .read<SettingBloc>()
+                                                        .add(OnLogOut());
+                                                  },
+                                                  child: Text('Logout')),
+                                            ];
+                                          else if (state.status ==
+                                              FormzSubmissionStatus.inProgress)
+                                            [CircularProgressIndicator()];
+                                          return Text('something went wrong?');
+                                        })
+                                      ],
+                                      title: Text('Logout'),
+                                      contentPadding: const EdgeInsets.all(20),
+                                      content: const Text('Still want logout?'),
+                                    ));
+                          },
+                        ),
+                      ],
+                    ))),
             appBar: AppBar(
               iconTheme:
                   IconThemeData(color: Color.fromARGB(255, 151, 112, 48)),
