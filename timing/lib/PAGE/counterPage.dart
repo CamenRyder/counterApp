@@ -65,6 +65,23 @@ class CounterPage extends StatelessWidget {
                           color: Color.fromARGB(255, 151, 112, 48)),
                     ),
                     title: Text(
+                      'My profile',
+                      style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Color.fromARGB(255, 151, 112, 48)),
+                    ),
+                    onTap: () {},
+                  ),
+                  ListTile(
+                    leading: Text(
+                      '-',
+                      style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          color: Color.fromARGB(255, 151, 112, 48)),
+                    ),
+                    title: Text(
                       'Show current result',
                       style: TextStyle(
                           fontSize: 18,
