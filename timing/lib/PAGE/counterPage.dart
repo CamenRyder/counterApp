@@ -123,23 +123,24 @@ class CounterPage extends StatelessWidget {
                         ),
                         BlocBuilder<SettingBloc, SettingState>(
                           builder: (context, state) {
+                            BuildContext contextSettimgBloc = context;
                             return ListTile(
-                              leading: const Text(
-                                '-',
-                                style: TextStyle(
-                                    fontSize: 30,
-                                    fontWeight: FontWeight.bold,
-                                    color: Color.fromARGB(255, 151, 112, 48)),
-                              ),
-                              title: const Text(
-                                'Logout',
-                                style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                    color: Color.fromARGB(255, 151, 112, 48)),
-                              ),
-                              onTap: () {
-                                showDialog(
+                                leading: const Text(
+                                  '-',
+                                  style: TextStyle(
+                                      fontSize: 30,
+                                      fontWeight: FontWeight.bold,
+                                      color: Color.fromARGB(255, 151, 112, 48)),
+                                ),
+                                title: const Text(
+                                  'Logout',
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                      color: Color.fromARGB(255, 151, 112, 48)),
+                                ),
+                                onTap: () {
+                                  showDialog(
                                     context: context,
                                     builder: (context) {
                                       return AlertDialog(
@@ -148,27 +149,37 @@ class CounterPage extends StatelessWidget {
                                               onPressed: () {
                                                 Navigator.of(context).pop();
                                               },
-                                              child: Text('Cancel')),
+                                              child: const Text('Cancel')),
                                           TextButton(
                                               onPressed: () {
-                                                RepositoryProvider.of<
-                                                            AuthenticationRes>(
-                                                        context)
-                                                    .logOut();
+                                                contextSettimgBloc
+                                                    .read<SettingBloc>()
+                                                    .add(OnLogOut());
+                                                Navigator.of(context).pop();
+                                                showDialog(
+                                                  context: context,
+                                                  builder: (context) {
+                                                    return const Center(
+                                                      child:
+                                                          CircularProgressIndicator(
+                                                        color: Color.fromARGB(
+                                                            255, 151, 112, 48),
+                                                      ),
+                                                    );
+                                                  },
+                                                );
                                               },
-                                              child: Text('Logout')),
+                                              child: const Text('Logout')),
                                         ],
-                                        title: Text('Logout'),
-                                        contentPadding:
-                                            const EdgeInsets.all(20),
-                                        content:
-                                            const Text('Still want logout?'),
+                                        title: const Text('Logout'),
+                                        content: const Text(
+                                            'Still logout this account?'),
                                       );
-                                    });
-                              },
-                            );
+                                    },
+                                  );
+                                });
                           },
-                        ),
+                        )
                       ],
                     ))),
             appBar: AppBar(
