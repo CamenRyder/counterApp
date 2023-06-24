@@ -121,31 +121,31 @@ class CounterPage extends StatelessWidget {
                           ),
                           onTap: () {},
                         ),
-                        ListTile(
-                          leading: const Text(
-                            '-',
-                            style: TextStyle(
-                                fontSize: 30,
-                                fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 151, 112, 48)),
-                          ),
-                          title: const Text(
-                            'Logout',
-                            style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 151, 112, 48)),
-                          ),
-                          onTap: () {
-                            showDialog(
-                                context: context,
-                                builder: (context) => AlertDialog(
-                                      actions: [
-                                        BlocBuilder<SettingBloc, SettingState>(
-                                            builder: (context, state) {
-                                          if (state.status ==
-                                              FormzSubmissionStatus.initial)
-                                            [
+                        BlocBuilder<SettingBloc, SettingState>(
+                          builder: (context, state) {
+                            return ListTile(
+                              leading: const Text(
+                                '-',
+                                style: TextStyle(
+                                    fontSize: 30,
+                                    fontWeight: FontWeight.bold,
+                                    color: Color.fromARGB(255, 151, 112, 48)),
+                              ),
+                              title: const Text(
+                                'Logout',
+                                style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                    color: Color.fromARGB(255, 151, 112, 48)),
+                              ),
+                              onTap: () {
+                                showDialog(
+                                    context: context,
+                                    builder: (context) => AlertDialog(
+                                          actions: [
+                                            if (state.status ==
+                                                FormzSubmissionStatus
+                                                    .initial) ...[
                                               TextButton(
                                                   onPressed: () {
                                                     Navigator.of(context).pop();
@@ -156,20 +156,23 @@ class CounterPage extends StatelessWidget {
                                                     Navigator.of(context).pop();
                                                     context
                                                         .read<SettingBloc>()
-                                                        .add(OnLogOut());
+                                                        .add(OnLogOut()); 
                                                   },
                                                   child: Text('Logout')),
-                                            ];
-                                          else if (state.status ==
-                                              FormzSubmissionStatus.inProgress)
-                                            [CircularProgressIndicator()];
-                                          return Text('something went wrong?');
-                                        })
-                                      ],
-                                      title: Text('Logout'),
-                                      contentPadding: const EdgeInsets.all(20),
-                                      content: const Text('Still want logout?'),
-                                    ));
+                                            ] else if (state.status ==
+                                                FormzSubmissionStatus
+                                                    .inProgress) ...[
+                                              CircularProgressIndicator()
+                                            ]
+                                          ],
+                                          title: Text('Logout'),
+                                          contentPadding:
+                                              const EdgeInsets.all(20),
+                                          content:
+                                              const Text('Still want logout?'),
+                                        ));
+                              },
+                            );
                           },
                         ),
                       ],
