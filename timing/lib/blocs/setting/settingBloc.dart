@@ -16,15 +16,15 @@ class SettingBloc extends Bloc<SettingEvent, SettingState> {
   AuthenticationRes _authenRes;
 
   Future<void> _onLogout(OnLogOut event, Emitter<SettingState> emit) async {
-   try{
- emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
-    await Future<void>.delayed(
-        Duration(microseconds: Random().nextInt(1000) + 1000), () {
-      _authenRes.logOut();
-      emit(state.copyWith(status: FormzSubmissionStatus.success));   
-    });
-   }catch(_) {
- emit(state.copyWith(status: FormzSubmissionStatus.failure));
-   }
+    try {
+      emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
+      await Future<void>.delayed(
+          Duration(milliseconds: Random().nextInt(4000) + 1000), () {
+        _authenRes.logOut();
+        emit(state.copyWith(status: FormzSubmissionStatus.success));
+      });
+    } catch (_) {
+      emit(state.copyWith(status: FormzSubmissionStatus.failure));
+    }
   }
 }

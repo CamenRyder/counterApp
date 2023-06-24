@@ -141,36 +141,30 @@ class CounterPage extends StatelessWidget {
                               onTap: () {
                                 showDialog(
                                     context: context,
-                                    builder: (context) => AlertDialog(
-                                          actions: [
-                                            if (state.status ==
-                                                FormzSubmissionStatus
-                                                    .initial) ...[
-                                              TextButton(
-                                                  onPressed: () {
-                                                    Navigator.of(context).pop();
-                                                  },
-                                                  child: Text('Cancel')),
-                                              TextButton(
-                                                  onPressed: () {
-                                                    Navigator.of(context).pop();
-                                                    context
-                                                        .read<SettingBloc>()
-                                                        .add(OnLogOut()); 
-                                                  },
-                                                  child: Text('Logout')),
-                                            ] else if (state.status ==
-                                                FormzSubmissionStatus
-                                                    .inProgress) ...[
-                                              CircularProgressIndicator()
-                                            ]
-                                          ],
-                                          title: Text('Logout'),
-                                          contentPadding:
-                                              const EdgeInsets.all(20),
-                                          content:
-                                              const Text('Still want logout?'),
-                                        ));
+                                    builder: (context) {
+                                      return AlertDialog(
+                                        actions: [
+                                          TextButton(
+                                              onPressed: () {
+                                                Navigator.of(context).pop();
+                                              },
+                                              child: Text('Cancel')),
+                                          TextButton(
+                                              onPressed: () {
+                                                RepositoryProvider.of<
+                                                            AuthenticationRes>(
+                                                        context)
+                                                    .logOut();
+                                              },
+                                              child: Text('Logout')),
+                                        ],
+                                        title: Text('Logout'),
+                                        contentPadding:
+                                            const EdgeInsets.all(20),
+                                        content:
+                                            const Text('Still want logout?'),
+                                      );
+                                    });
                               },
                             );
                           },
