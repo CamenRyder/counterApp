@@ -36,7 +36,83 @@ class CounterPage extends StatelessWidget {
     return BlocProvider(
         create: (_) => CounterBloc(tick: Tick()),
         child: Scaffold(
+            drawer: Drawer(
+              shadowColor: Color.fromARGB(255, 75, 12, 7),
+              backgroundColor: Color.fromARGB(255, 112, 16, 10),
+              child: ListView(
+                children: [
+                  const ListTile(
+                    leading: Icon(
+                      Icons.settings,
+                      size: 30,
+                      color: Color.fromARGB(255, 151, 112, 48),
+                    ),
+                    title: Text(
+                      'Setting',
+                      textDirection: TextDirection.ltr,
+                      style: TextStyle(
+                          fontSize: 28,
+                          fontWeight: FontWeight.bold,
+                          color: Color.fromARGB(255, 151, 112, 48)),
+                    ),
+                  ),
+                  ListTile(
+                    leading: Text(
+                      '-',
+                      style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          color: Color.fromARGB(255, 151, 112, 48)),
+                    ),
+                    title: Text(
+                      'Show current result',
+                      style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Color.fromARGB(255, 151, 112, 48)),
+                    ),
+                    onTap: () {},
+                  ),
+                  ListTile(
+                    leading: Text(
+                      '-',
+                      style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          color: Color.fromARGB(255, 151, 112, 48)),
+                    ),
+                    title: Text(
+                      'Customize time',
+                      style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Color.fromARGB(255, 151, 112, 48)),
+                    ),
+                    onTap: () {},
+                  ),
+                  ListTile(
+                    leading: Text(
+                      '-',
+                      style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          color: Color.fromARGB(255, 151, 112, 48)),
+                    ),
+                    title: Text(
+                      'Logout',
+                      style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Color.fromARGB(255, 151, 112, 48)),
+                    ),
+                    onTap: () {},
+                  )
+                ],
+              ),
+            ),
             appBar: AppBar(
+              iconTheme:
+                  IconThemeData(color: Color.fromARGB(255, 151, 112, 48)),
               backgroundColor: Color.fromARGB(255, 75, 12, 7),
               title: const Text(
                 'countdown ?',
@@ -174,7 +250,6 @@ class CounterPage extends StatelessWidget {
                             );
                           },
                         )),
-                    
                   ],
                 ),
               ],

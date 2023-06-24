@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
@@ -33,6 +32,7 @@ class _LoginPage extends State<LoginPage> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
+
         appBar: AppBar(
           backgroundColor: Color.fromARGB(255, 75, 12, 7),
           title: const Text(
@@ -74,12 +74,12 @@ class LoginForm extends StatelessWidget {
               ..hideCurrentSnackBar()
               ..showSnackBar(
                 const SnackBar(
-                  content: Text('co gi do khong dung, that bai?'),
-                  duration: Duration(milliseconds: 3500),
+                  content: Text('Sai mat khau? '),
+                  duration: Duration(milliseconds: 4500),
                 ),
               );
             print('adduu ?');
-            context.read<LoginBloc>().add(OnReset());  
+            context.read<LoginBloc>().add(OnReset());
             print('duuu?');
           }
         },
