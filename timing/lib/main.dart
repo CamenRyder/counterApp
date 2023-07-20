@@ -41,7 +41,7 @@ class _MyApp extends State<MyApp> {
     super.dispose();
     _authenticationRes.dispose();
   }
-
+                
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -54,6 +54,12 @@ class _MyApp extends State<MyApp> {
               AuthenticateBloc(authenticationRes: _authenticationRes)),
     );
   }
-}
+} 
 
 
+
+
+
+
+
+  

@@ -23,5 +23,4 @@ const { PrismaClient  } = require('@prisma/client')
                 failureCode(res); 
             }
  }
-
  module.exports = {loginUser} 
