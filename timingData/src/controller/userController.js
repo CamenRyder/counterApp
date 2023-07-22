@@ -23,4 +23,40 @@ const { PrismaClient  } = require('@prisma/client')
                 failureCode(res); 
             }
  }
- module.exports = {loginUser}  
+
+ const signUp = async  (req, res) => {
+    try{
+        const { username , password ,  number , dateSignUp , name } =  req.body ;  
+        const data =  { username , password ,number , dateSignUp , name  } ; 
+       let isData =  await prisma.user.findFirst({where: {username}}) ;
+        if(!isData) {
+          let createData =   await prisma.user.create({data})  
+            successCode(res,'new account',data)     
+        }else errorCode(res, "username already!" ,  data );       
+        
+    }catch(err) 
+    {
+        failureCode(res); 
+    }
+}
+
+const forgotPassword = async (req, res) => {
+    const { username ,  number } = req.body ;  
+try{
+        let isData = await prisma.user.findFirst({where: {username}}) ; 
+        if(isData) {
+            let isNumber = await prisma.user.findFirst({where: {
+                number
+            }})  
+            if(isNumber) {
+                successCode(res,'success request', isNumber) ;  
+            }else {
+            errorCode(res, 'your phone is correct?', req.body) 
+            }
+    }else errorCode(res, "username not already!" ,  data );   
+}   catch (err) {
+    failureCode(res); 
+}
+
+}
+ module.exports = {loginUser , signUp , forgotPassword  }  
