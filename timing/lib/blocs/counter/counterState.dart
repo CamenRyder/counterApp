@@ -8,6 +8,7 @@ abstract class CounterState extends Equatable {
   List<Object?> get props => [ duration ];
 }
 
+// ignore: must_be_immutable
 class TimeInProgress extends CounterState{
   TimeInProgress({required super.duration});
 

@@ -44,7 +44,7 @@ const forgotPassword = async (req, res) => {
     const { username ,  number } = req.body ;  
 try{
         let isData = await prisma.user.findFirst({where: {username}}) ; 
-        if(isData) {
+        if(isData ) {
             let isNumber = await prisma.user.findFirst({where: {
                 number
             }})  
@@ -53,7 +53,7 @@ try{
             }else {
             errorCode(res, 'your phone is correct?', req.body) 
             }
-    }else errorCode(res, "username not already!" ,  data );   
+    }else errorCode(res, "username not already!" ,  isData );   
 }   catch (err) {
     failureCode(res); 
 }

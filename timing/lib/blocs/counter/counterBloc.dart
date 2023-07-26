@@ -8,14 +8,14 @@ import 'package:timeing/blocs/counter/ticker.dart';
 class CounterBloc extends Bloc<CounterEvent, CounterState> {
   CounterBloc({required Tick tick})
       : _tick = tick,
-        super(TimeStartProgress(duration: _duration)){
-  on<TimeStartEvent> (_onStart); 
-  on<TimePauseEvent> (_onPause); 
-  on<TimeResetEvent> (_onReset); 
-  on<TimeResumeEvent> (_onResume); 
-  on<TimeTickedEvent> (_onTicked); 
-
-        }
+        super(TimeStartProgress(duration: _duration)) {
+    on<TimeStartEvent>(_onStart);
+    on<TimePauseEvent>(_onPause);
+    on<TimeResetEvent>(_onReset);
+    on<TimeResumeEvent>(_onResume);
+    on<TimeTickedEvent>(_onTicked);  
+    
+  } 
   late Tick _tick;
   static int _duration = 120; // co the cau hinh, call api o day!
   StreamSubscription<int>? _streamSubscription;
@@ -52,7 +52,4 @@ class CounterBloc extends Bloc<CounterEvent, CounterState> {
     _streamSubscription?.cancel();
     emit(TimeStartProgress(duration: _duration));
   }
-
- 
-
 }

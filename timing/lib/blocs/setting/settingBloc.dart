@@ -13,7 +13,7 @@ class SettingBloc extends Bloc<SettingEvent, SettingState> {
     on<OnLogOut>(_onLogout);
   }
 
-  AuthenticationRes _authenRes;
+  final AuthenticationRes _authenRes;
 
   Future<void> _onLogout(OnLogOut event, Emitter<SettingState> emit) async {
     try {

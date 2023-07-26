@@ -32,7 +32,6 @@ class _LoginPage extends State<LoginPage> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-
         appBar: AppBar(
           backgroundColor: Color.fromARGB(255, 75, 12, 7),
           title: const Text(

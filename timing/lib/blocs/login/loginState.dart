@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:formz/formz.dart';
 
 class LoginState extends Equatable {
-  LoginState(
+  const LoginState(
       {this.username = '',
       this.password = '',
       this.isValid = false,
@@ -30,12 +30,11 @@ class LoginState extends Equatable {
     return LoginState(
       status: FormzSubmissionStatus.success,
       username: this.username,
-      password: this.password,
+      password: this.password,  
       isValid: this.isValid,
     );
   }
 
   @override
-  // TODO: implement props
   List<Object?> get props => [username, password, status];
 }

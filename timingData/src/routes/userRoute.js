@@ -5,7 +5,7 @@ userRouter.use(express.json())
 
 userRouter.post("/loginUser", loginUser)
 userRouter.post("/forgotPassword", forgotPassword)
-userRouter.get("/signUp", signUp)
+userRouter.post("/signUp", signUp)
 
 
 module.exports = {userRouter} ;   
