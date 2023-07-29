@@ -59,4 +59,6 @@ try{
 }
 
 }
+
+
  module.exports = {loginUser , signUp , forgotPassword  }  

@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:timeing/blocs/login/loginEvent.dart';
 import 'package:timeing/blocs/login/loginState.dart';
+import 'package:timeing/page/passwordPage.dart';
 
 import '../blocs/login/loginBloc.dart';
 
@@ -133,7 +134,6 @@ class ButtonLogin extends StatelessWidget {
                       ))));
         }
 
-
         return Container(
           alignment: Alignment.centerRight,
           margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
@@ -185,12 +185,14 @@ class ForgotAndSignUp extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 MaterialButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(ForgotPasswordPage.route());
+                  },
                   child: Text(
                     'forgot password?',
                     style: TextStyle(
                         fontSize: 14,
-                        fontWeight: FontWeight.w300,
+                        fontWeight: FontWeight.w300, 
                         color: Color.fromARGB(255, 151, 112, 48)),
                   ),
                 ),

@@ -5,6 +5,7 @@ import 'package:timeing/blocs/authentication/authenState.dart';
 import 'package:timeing/models/authentication.dart';
 import 'package:timeing/page/counterPage.dart';
 import 'package:timeing/page/loginPage.dart';
+import 'package:timeing/page/passwordPage.dart';
 
 import '../PAGE/splashPage.dart';
 
@@ -34,15 +35,17 @@ class _AppView extends State<AppView> {
                 case AuthenticationStatus.unauthenticated:
                   _navigator.pushAndRemoveUntil<void>(
                       LoginPage.route(), (route) => false);
+                  // ForgotPassword.route(),
+                  // (route) => false);
                   break;
                 case AuthenticationStatus.authenticated:
                   //  Future<void>.delayed(Duration(seconds: 2), () {
-                   
+
                   // });
                   // _navigator.pushAndRemoveUntil<void>(
                   //     SplashPage.route(), (route) => false);
-                   _navigator.pushAndRemoveUntil<void>(
-                        CounterPage.route(), (route) => false); 
+                  _navigator.pushAndRemoveUntil<void>(
+                      CounterPage.route(), (route) => false);
                   break;
               }
             },

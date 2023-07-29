@@ -14,7 +14,7 @@ class LoginPage extends StatefulWidget {
 
   static Route<void> route() {
     return MaterialPageRoute(
-      builder: (context) => LoginPage(),
+      builder: (context) => const LoginPage(),
     );
   }
 
