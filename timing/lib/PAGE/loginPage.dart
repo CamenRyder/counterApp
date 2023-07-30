@@ -24,7 +24,6 @@ class LoginPage extends StatefulWidget {
     return _LoginPage();
   }
 }
-
 class _LoginPage extends State<LoginPage> {
   var cl1 = TextEditingController();
   var cl2 = TextEditingController();

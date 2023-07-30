@@ -33,7 +33,7 @@ class UseService {
     });
   }
 
-  Future<void> signUpAccount(
+  Future<dynamic> signUpAccount(
       {required String username,
       required String password,
       required String number,
@@ -49,19 +49,17 @@ class UseService {
           'dateSignUp': dateSignUp,
           'name': name,
         }));
-
-    var data = response.body;
-    print(data);
+      // response.sta 
+    return response;
   }
 
-  Future<void> forgotPassword(
+  Future<dynamic> forgotPassword(
       {required String username, required String number}) async {
     http.Client httpClient = http.Client();
     final response = await httpClient.post(Uri.parse(url2),
         headers: {"Content-type": "application/json"},
         body: jsonEncode({'username': username, 'number': number}));
-    var data = response.body;  
-    print(data);
 
+    return response;   
   }
 }

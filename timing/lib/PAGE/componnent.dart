@@ -24,6 +24,7 @@ class UsernameInput extends StatelessWidget {
         return Container(
           padding: const EdgeInsets.all(10),
           child: TextField(
+            cursorColor: Colors.black,
             controller: _controller01,
             onChanged: (username) => context
                 .read<LoginBloc>()
@@ -73,6 +74,7 @@ class PasswordInput extends StatelessWidget {
         return Container(
           padding: const EdgeInsets.all(10),
           child: TextField(
+            cursorColor: Colors.black,
             controller: _controller02,
             onChanged: (password) => context
                 .read<LoginBloc>()
@@ -192,7 +194,7 @@ class ForgotAndSignUp extends StatelessWidget {
                     'forgot password?',
                     style: TextStyle(
                         fontSize: 14,
-                        fontWeight: FontWeight.w300, 
+                        fontWeight: FontWeight.w300,
                         color: Color.fromARGB(255, 151, 112, 48)),
                   ),
                 ),

@@ -28,9 +28,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         username: '', 
         password: ''));
   }
-
- 
-
   void _onPasswordChanged(OnPasswordEvent event, Emitter<LoginState> emit) {
     var password = event.password;
     print(password);
