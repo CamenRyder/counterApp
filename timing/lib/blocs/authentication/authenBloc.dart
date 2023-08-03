@@ -35,11 +35,11 @@ class AuthenticateBloc extends Bloc<AuthenticateEvent, AuthenticateState> {
       AuthenticateChangedLogin event, Emitter<AuthenticateState> emit) async {
     switch (event.status) {
       case AuthenticationStatus.authenticated:
-        emit(AuthenticateState.authenticated());
+        emit(const AuthenticateState.authenticated());
       case AuthenticationStatus.unauthenticated:
-        emit(AuthenticateState.unauthenticated());
+        emit(const AuthenticateState.unauthenticated());
       case AuthenticationStatus.unknown:
-        emit(AuthenticateState.unknown());
+        emit(const AuthenticateState.unknown());
     }
   }
 

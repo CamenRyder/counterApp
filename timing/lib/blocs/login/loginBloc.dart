@@ -7,7 +7,7 @@ import 'package:timeing/models/authentication.dart';
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   LoginBloc({required AuthenticationRes authenRes})
       : _authenRes = authenRes,
-        super(LoginState()) {
+        super(const LoginState()) {
     on<OnUsernameEvent>(_onUsernameChanged);
     on<OnPasswordEvent>(_onPasswordChanged);
     on<OnSubbmited>(_onSubmitted);
@@ -39,16 +39,16 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   Future<void> _onSubmitted(OnSubbmited event, Emitter<LoginState> emit) async {
     print(state.isValid);
     if (state.isValid) {
-      print('vao tien tring?');
+      // print('vao tien tring?');
       emit(state.copytWith(
         status: FormzSubmissionStatus.inProgress,
       ));
-      print('loading?');
+      // print('loading?');
       try {
-        print('user: ${state.username}, pass: ${state.password}');
+        // print('user: ${state.username}, pass: ${state.password}');
         int value = await _authenRes.login(
             username: state.username, password: state.password);
-        print('loi');
+        // print('loi'); 
         if (value == 1) {
           emit(state.copytWith(status: FormzSubmissionStatus.success));
         }
@@ -57,7 +57,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
               status: FormzSubmissionStatus.failure, isValid: false));
         }
       } catch (_) {
-        print('vao trycatch ?');
+        // print('vao trycatch ?'); 
         emit(state.copytWith(
             status: FormzSubmissionStatus.failure, isValid: false));
       }

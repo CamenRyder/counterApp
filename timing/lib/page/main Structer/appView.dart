@@ -1,18 +1,18 @@
+// ignore: file_names
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:timeing/blocs/authentication/authenBloc.dart';
 import 'package:timeing/blocs/authentication/authenState.dart';
 import 'package:timeing/models/authentication.dart';
-import 'package:timeing/page/counterPage.dart';
-import 'package:timeing/page/loginPage.dart';
-import 'package:timeing/page/passwordPage.dart';
-
-import '../PAGE/splashPage.dart';
+import 'package:timeing/page/counter%20page/counterPage.dart';
+import 'package:timeing/page/LoginComponnent/loginPage.dart';
+import '../other page/splashPage.dart';
 
 class AppView extends StatefulWidget {
+  const AppView({super.key});
+
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return _AppView();
   }
 }
@@ -23,7 +23,6 @@ class _AppView extends State<AppView> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return MaterialApp(
         navigatorKey: _navigatorKey,
         builder: (context, child) {
@@ -33,6 +32,7 @@ class _AppView extends State<AppView> {
                 case AuthenticationStatus.unknown:
                   break;
                 case AuthenticationStatus.unauthenticated:
+              
                   _navigator.pushAndRemoveUntil<void>(
                       LoginPage.route(), (route) => false);
                   // ForgotPassword.route(),

@@ -5,9 +5,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:timeing/blocs/login/loginEvent.dart';
 import 'package:timeing/blocs/login/loginState.dart';
-import 'package:timeing/page/passwordPage.dart';
+import 'package:timeing/page/LoginComponnent/forgotPassword%20Page/passwordPage.dart';
 
-import '../blocs/login/loginBloc.dart';
+import '../../blocs/login/loginBloc.dart';
 
 class UsernameInput extends StatelessWidget {
   // ignore: use_key_in_widget_constructors
@@ -188,7 +188,7 @@ class ForgotAndSignUp extends StatelessWidget {
               children: [
                 MaterialButton(
                   onPressed: () {
-                    Navigator.of(context).push(ForgotPasswordPage.route());
+                      Navigator.of(context).push(ForgotPasswordPage.route());
                   },
                   child: Text(
                     'forgot password?',

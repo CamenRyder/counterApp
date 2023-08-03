@@ -9,9 +9,9 @@ import 'package:timeing/blocs/setting/settingBloc.dart';
 import 'package:timeing/blocs/setting/settingEvent.dart';
 import 'package:timeing/blocs/setting/settingState.dart';
 
-import '../BackGround/backgroundLogin.dart';
-import '../blocs/counter/ticker.dart';
-import '../models/authentication.dart';
+import '../../BackGround/backgroundLogin.dart';
+import '../../blocs/counter/ticker.dart';
+import '../../models/authentication.dart';
 
 class ShowTime extends StatelessWidget {
   @override

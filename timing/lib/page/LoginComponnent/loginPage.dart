@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
@@ -6,8 +7,8 @@ import 'package:timeing/blocs/login/loginEvent.dart';
 import 'package:timeing/blocs/login/loginState.dart';
 import 'package:timeing/models/authentication.dart';
 
-import '../BackGround/backgroundLogin.dart';
-import '../page/componnent.dart';
+import '../../BackGround/backgroundLogin.dart';
+import 'componnent.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -15,12 +16,12 @@ class LoginPage extends StatefulWidget {
   static Route<void> route() {
     return MaterialPageRoute(
       builder: (context) => const LoginPage(),
-    );
+    ); 
   }
 
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
+
     return _LoginPage();
   }
 }
@@ -29,12 +30,12 @@ class _LoginPage extends State<LoginPage> {
   var cl2 = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
+
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Color.fromARGB(255, 75, 12, 7),
+          backgroundColor: const Color.fromARGB(255, 75, 12, 7),
           title: const Text(
-            'login',
+            'Login',
             style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -85,7 +86,7 @@ class LoginForm extends StatelessWidget {
           children: [
             const BG_login(),
             SafeArea(
-              minimum: EdgeInsets.all(5),
+              minimum: const EdgeInsets.all(5),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

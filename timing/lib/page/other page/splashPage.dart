@@ -7,11 +7,10 @@ class SplashPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
         body: Container(
-      color: Color.fromARGB(255, 75, 12, 7),
-      child: Center(
+      color: const Color.fromARGB(255, 75, 12, 7),
+      child: const Center(
         child: CircularProgressIndicator(
             strokeWidth: 4, color: Color.fromARGB(255, 151, 112, 48)),
       ),
@@ -26,11 +25,10 @@ class SplashPageCicular02 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
         body: Container(
-      color: Color.fromARGB(255, 75, 12, 7),
-      child: Center(
+      color: const Color.fromARGB(255, 75, 12, 7),
+      child: const Center(
         child: CircularProgressIndicator(
             strokeWidth: 4, color: Color.fromARGB(255, 151, 112, 48)),
       ),

@@ -34,7 +34,7 @@ class LoginState extends Equatable {
       isValid: this.isValid,
     );
   }
-
+   
   @override
   List<Object?> get props => [username, password, status];
 }

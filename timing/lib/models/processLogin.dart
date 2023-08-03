@@ -4,7 +4,7 @@ import 'dart:math';
 import 'package:http/http.dart';
 import 'package:timeing/service/userService.dart';
 
-enum ProcessLoginStatus { login, forgot, registering }
+enum ProcessLoginStatus { login, forgot , recovery , registering }
 
 class ProcessLogin {
   final _controller = StreamController<ProcessLoginStatus>();
@@ -38,4 +38,22 @@ class ProcessLogin {
         });
     return '';
   }
+
+
+  Future<Response> ForgotPasswordAccount ({
+    required String account,
+    required String number,
+  }) async {
+    useService = UseService();
+    Response data = await useService.forgotPassword(
+        number: number  , username: account );
+    await Future<void>.delayed(
+        Duration(milliseconds: Random().nextInt(1000) + 1000) , () => {
+                if( data.statusCode == 200 ) {
+                        _controller.add(ProcessLoginStatus.login)
+                }
+        });
+    return data ;
+  }
+
 }
