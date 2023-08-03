@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
@@ -16,21 +15,22 @@ class LoginPage extends StatefulWidget {
   static Route<void> route() {
     return MaterialPageRoute(
       builder: (context) => const LoginPage(),
-    ); 
+    );
   }
 
   @override
   State<StatefulWidget> createState() {
-
     return _LoginPage();
   }
 }
+
 class _LoginPage extends State<LoginPage> {
+  final _navigatorKey = GlobalKey<NavigatorState>();
+  NavigatorState get _navigator => _navigatorKey.currentState!;  
   var cl1 = TextEditingController();
   var cl2 = TextEditingController();
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
         appBar: AppBar(
           backgroundColor: const Color.fromARGB(255, 75, 12, 7),

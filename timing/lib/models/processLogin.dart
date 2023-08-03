@@ -4,7 +4,7 @@ import 'dart:math';
 import 'package:http/http.dart';
 import 'package:timeing/service/userService.dart';
 
-enum ProcessLoginStatus { login, forgot , recovery , registering }
+enum ProcessLoginStatus { login, forgot , renewPass , registering }
 
 class ProcessLogin {
   final _controller = StreamController<ProcessLoginStatus>();
@@ -50,7 +50,8 @@ class ProcessLogin {
     await Future<void>.delayed(
         Duration(milliseconds: Random().nextInt(1000) + 1000) , () => {
                 if( data.statusCode == 200 ) {
-                        _controller.add(ProcessLoginStatus.login)
+                        _controller.add(ProcessLoginStatus.login)   // truoc mat se de su dung 
+                        // _controller.add(ProcessLoginStatus.renewPass)   // truoc mat se de su dung 
                 }
         });
     return data ;
