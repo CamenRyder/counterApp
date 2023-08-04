@@ -62,4 +62,8 @@ class ProcessLogin {
   void LogiProcess() {
     _controller.add(ProcessLoginStatus.login);
   }
+
+  void dispose() {
+    _controller.close(); 
+  }
 }

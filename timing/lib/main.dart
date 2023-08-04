@@ -42,7 +42,7 @@ class _MyApp extends State<MyApp> {
     return RepositoryProvider.value(
       value: _authenticationRes,
       child: BlocProvider(
-          child: AppView(),
+          child: const AppView(),
           create: (_) =>
               AuthenticateBloc(authenticationRes: _authenticationRes)),
     );

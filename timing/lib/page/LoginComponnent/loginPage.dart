@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
@@ -5,6 +7,7 @@ import 'package:timeing/blocs/login/loginBloc.dart';
 import 'package:timeing/blocs/login/loginEvent.dart';
 import 'package:timeing/blocs/login/loginState.dart';
 import 'package:timeing/models/authentication.dart';
+import 'package:timeing/models/processLogin.dart';
 
 import '../../BackGround/backgroundLogin.dart';
 import 'componnent.dart';
@@ -24,21 +27,25 @@ class LoginPage extends StatefulWidget {
   }
 }
 
-
-
-
 class _LoginPage extends State<LoginPage> {
-  final _navigatorKey = GlobalKey<NavigatorState>();
-  NavigatorState get _navigator => _navigatorKey.currentState!;
+  late final ProcessLogin _processLogin;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _processLogin = ProcessLogin();   
+  }
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _processLogin
+  }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      navigatorKey: _navigatorKey , 
-      builder:(context, child) {
-        return BlocListener<>
-      },
-    ); 
+    // TODO: implement build
+    throw UnimplementedError();
   }
 }
 
@@ -53,6 +60,7 @@ class TotalLoginPage extends StatefulWidget {
 class _TotalLoginPage extends State<TotalLoginPage> {
   var cl1 = TextEditingController();
   var cl2 = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build

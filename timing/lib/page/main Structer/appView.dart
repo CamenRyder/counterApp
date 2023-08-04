@@ -54,4 +54,11 @@ class _AppView extends State<AppView> {
         },
         onGenerateRoute: (_) => SplashPage.route());
   }
+
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+  }
 }
