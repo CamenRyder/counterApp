@@ -24,13 +24,38 @@ class LoginPage extends StatefulWidget {
   }
 }
 
+
+
+
 class _LoginPage extends State<LoginPage> {
   final _navigatorKey = GlobalKey<NavigatorState>();
-  NavigatorState get _navigator => _navigatorKey.currentState!;  
+  NavigatorState get _navigator => _navigatorKey.currentState!;
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      navigatorKey: _navigatorKey , 
+      builder:(context, child) {
+        return BlocListener<>
+      },
+    ); 
+  }
+}
+
+class TotalLoginPage extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return _TotalLoginPage();
+  }
+}
+
+class _TotalLoginPage extends State<TotalLoginPage> {
   var cl1 = TextEditingController();
   var cl2 = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    // TODO: implement build
     return Scaffold(
         appBar: AppBar(
           backgroundColor: const Color.fromARGB(255, 75, 12, 7),

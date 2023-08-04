@@ -4,7 +4,7 @@ import 'dart:math';
 import 'package:http/http.dart';
 import 'package:timeing/service/userService.dart';
 
-enum ProcessLoginStatus { login, forgot , renewPass , registering }
+enum ProcessLoginStatus { login, forgot, renewPass, registering }
 
 class ProcessLogin {
   final _controller = StreamController<ProcessLoginStatus>();
@@ -31,30 +31,35 @@ class ProcessLogin {
         dateSignUp: dateSignUp,
         name: name);
     await Future<void>.delayed(
-        Duration(milliseconds: Random().nextInt(2000) + 1000) , () => {
-                if( data.statusCode == 200 ) {
-                        _controller.add(ProcessLoginStatus.login)
-                }
-        });
+        Duration(milliseconds: Random().nextInt(2000) + 1000),
+        () => {
+              if (data.statusCode == 200)
+                {_controller.add(ProcessLoginStatus.login)}
+            });
     return '';
   }
 
-
-  Future<Response> ForgotPasswordAccount ({
+  Future<Response> ForgotPasswordAccount({
     required String account,
     required String number,
   }) async {
     useService = UseService();
-    Response data = await useService.forgotPassword(
-        number: number  , username: account );
+    Response data =
+        await useService.forgotPassword(number: number, username: account);
     await Future<void>.delayed(
-        Duration(milliseconds: Random().nextInt(1000) + 1000) , () => {
-                if( data.statusCode == 200 ) {
-                        _controller.add(ProcessLoginStatus.login)   // truoc mat se de su dung 
-                        // _controller.add(ProcessLoginStatus.renewPass)   // truoc mat se de su dung 
+        Duration(milliseconds: Random().nextInt(1000) + 1000),
+        () => {
+              if (data.statusCode == 200)
+                {
+                  _controller
+                      .add(ProcessLoginStatus.login) // truoc mat se de su dung
+                  // _controller.add(ProcessLoginStatus.renewPass)   // truoc mat se de su dung
                 }
-        });
-    return data ;
+            });
+    return data;
   }
 
+  void LogiProcess() {
+    _controller.add(ProcessLoginStatus.login);
+  }
 }
