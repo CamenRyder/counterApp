@@ -8,9 +8,14 @@ import 'package:timeing/blocs/login/loginEvent.dart';
 import 'package:timeing/blocs/login/loginState.dart';
 import 'package:timeing/models/authentication.dart';
 import 'package:timeing/models/processLogin.dart';
+import 'package:timeing/page/main%20Structer/appView.dart';
 
 import '../../BackGround/backgroundLogin.dart';
+import '../../blocs/loginProcess/loginProcessBloc.dart';
+import '../../blocs/loginProcess/loginProcessState.dart';
+import '../other page/splashPage.dart';
 import 'componnent.dart';
+import 'forgotPassword Page/passwordPage.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -28,28 +33,72 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPage extends State<LoginPage> {
-  late final ProcessLogin _processLogin;
+  late final ProcessLogin _processLoginValue;
+  final _navigatorKey = GlobalKey<NavigatorState>();
+  NavigatorState get _navigator => _navigatorKey.currentState!;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    _processLogin = ProcessLogin();   
+    _processLoginValue = ProcessLogin();
   }
+
   @override
   void dispose() {
     // TODO: implement dispose
     super.dispose();
-    _processLogin
+    _processLoginValue.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    throw UnimplementedError();
+    return RepositoryProvider.value(
+      value: _processLoginValue,
+      child: BlocProvider(
+          create: (context) => 
+              LoginProcessBloc(processLogin: _processLoginValue),
+          child: MaterialApp(
+              navigatorKey: _navigatorKey,
+              builder: (context, child) {
+                return BlocListener<LoginProcessBloc, ProcessLoginState>(
+                  listener: (context, state) {
+                    switch (state.status) {
+                      case ProcessLoginStatus.forgot:
+                        // Navigator.of(context).push(ForgotPasswordPage.route());
+                        _navigator.pushAndRemoveUntil<void>(
+                            ForgotPasswordPage.route(), (route) => false);
+                        break;
+                      case ProcessLoginStatus.renewPass:
+                        break;
+                      case ProcessLoginStatus.login:
+                        _navigator.pushAndRemoveUntil<void>(
+                            TotalLoginPage.route(), (route) => false);
+                        break;
+                      case ProcessLoginStatus.registering:
+                        break;
+                    }
+                  },
+                  child: child,
+                );
+              },
+              onGenerateRoute: (_) => SplashPage.route())),
+    );
   }
 }
 
-class TotalLoginPage extends StatefulWidget {
+class 
+TotalLoginPage extends StatefulWidget {
+  //      static Route<void> route() {
+  //   return MaterialPageRoute(
+  //     builder: (context) => ForgotPasswordPage(),
+  //   );
+  // }
+
+  static Route<void> route() {
+    return MaterialPageRoute(builder: (context) => TotalLoginPage());
+  }
+
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState

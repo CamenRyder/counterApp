@@ -7,8 +7,8 @@ import 'package:timeing/page/main%20Structer/appView.dart';
 
 void main() {
   // UseService useService = UseService();
-  // useService.forgotPassword(username: 'Account007',  number: '0337254483'); 
-  // callApiTest(); 
+  // useService.forgotPassword(username: 'Account007',  number: '0337254483');
+  // callApiTest();
   runApp(const MyApp());
 }
 
@@ -34,7 +34,7 @@ class _MyApp extends State<MyApp> {
   @override
   void dispose() {
     super.dispose();
-    _authenticationRes.dispose();
+    _authenticationRes.dispose();  
   }
 
   @override
