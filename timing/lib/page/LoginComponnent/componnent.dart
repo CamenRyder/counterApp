@@ -6,6 +6,8 @@ import 'package:formz/formz.dart';
 import 'package:timeing/blocs/login/loginEvent.dart';
 import 'package:timeing/blocs/login/loginState.dart';
 import 'package:timeing/blocs/loginProcess/loginProcessBloc.dart';
+import 'package:timeing/blocs/loginProcess/loginProcessState.dart';
+import 'package:timeing/models/processLogin.dart';
 import 'package:timeing/page/LoginComponnent/forgotPassword%20Page/passwordPage.dart';
 
 import '../../blocs/login/loginBloc.dart';
@@ -182,42 +184,53 @@ class ForgotAndSignUp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Expanded(
-        child: Align(
-            alignment: FractionalOffset.bottomCenter,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                MaterialButton(
-                  onPressed: () {
-                    // Navigator.of(context).push(ForgotPasswordPage.route());
-                               
-                  },
-                  child: Text(
-                    'forgot password?',
-                    style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w300,
-                        color: Color.fromARGB(255, 151, 112, 48)),
-                  ),
-                ),
-                Text(
-                  '?',
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w300,
-                      color: Color.fromARGB(255, 151, 112, 48)),
-                ),
-                MaterialButton(
-                    onPressed: () {},
-                    child: const Text(
-                      'SignUp',
+    return BlocBuilder<LoginProcessBloc, ProcessLoginState>(
+      builder: (context, state) {
+        return Expanded(
+            child: Align(
+                alignment: FractionalOffset.bottomCenter,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    MaterialButton(
+                      onPressed: () {
+                        // Navigator.of(context).push(ForgotPasswordPage.route());
+                        Future<void>.delayed(Duration(milliseconds: 875), () {
+                          context.read<LoginProcessBloc>().add(
+                              StatusChangedLoginProcess(
+                                  ProcessLoginStatus.forgot));
+                        });
+                        // Center(
+                        //   child: CircularProgressIndicator(),
+                        // );
+                      },
+                      child: Text(
+                        'forgot password?',
+                        style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w300,
+                            color: Color.fromARGB(255, 151, 112, 48)),
+                      ),
+                    ),
+                    Text(
+                      '?',
                       style: TextStyle(
-                          fontSize: 14,
+                          fontSize: 18,
                           fontWeight: FontWeight.w300,
                           color: Color.fromARGB(255, 151, 112, 48)),
-                    )),
-              ],
-            )));
+                    ),
+                    MaterialButton(
+                        onPressed: () {},
+                        child: const Text(
+                          'SignUp',
+                          style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w300,
+                              color: Color.fromARGB(255, 151, 112, 48)),
+                        )),
+                  ],
+                )));
+      },
+    );
   }
 }

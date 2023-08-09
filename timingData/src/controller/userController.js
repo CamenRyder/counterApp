@@ -58,7 +58,8 @@ try{
     failureCode(res); 
 }
 
-}  
+
+} 
 
 const changePassword = async (req,  res ) => {
         const  { number ,  username , oldPass ,  newPass ,  newPassAgain } =  req.body ; 

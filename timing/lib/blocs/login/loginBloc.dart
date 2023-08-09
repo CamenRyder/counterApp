@@ -12,6 +12,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     on<OnPasswordEvent>(_onPasswordChanged);
     on<OnSubbmited>(_onSubmitted);
     on<OnReset>(_onReset);
+    // on<OnForgotButton>() ; 
+    // on<OnSignUpButton>() ; 
   }
   final AuthenticationRes _authenRes;
   void _onUsernameChanged(OnUsernameEvent event, Emitter<LoginState> emit) {
@@ -21,13 +23,15 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         username: username,
         isValid: (state.password == '' || username == '') ? false : true));
   }
+
   void _onReset(OnReset event, Emitter<LoginState> emit) {
     emit(state.copytWith(
-       status: FormzSubmissionStatus.initial,
-        isValid: false, 
-        username: '', 
+        status: FormzSubmissionStatus.initial,
+        isValid: false,
+        username: '',
         password: ''));
   }
+
   void _onPasswordChanged(OnPasswordEvent event, Emitter<LoginState> emit) {
     var password = event.password;
     print(password);
@@ -48,7 +52,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         // print('user: ${state.username}, pass: ${state.password}');
         int value = await _authenRes.login(
             username: state.username, password: state.password);
-        // print('loi'); 
+        // print('loi');
         if (value == 1) {
           emit(state.copytWith(status: FormzSubmissionStatus.success));
         }
@@ -57,7 +61,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
               status: FormzSubmissionStatus.failure, isValid: false));
         }
       } catch (_) {
-        // print('vao trycatch ?'); 
+        // print('vao trycatch ?');
         emit(state.copytWith(
             status: FormzSubmissionStatus.failure, isValid: false));
       }

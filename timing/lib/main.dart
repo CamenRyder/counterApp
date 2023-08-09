@@ -31,12 +31,13 @@ class _MyApp extends State<MyApp> {
     _authenticationRes = AuthenticationRes();
   }
 
+
   @override
   void dispose() {
     super.dispose();
-    _authenticationRes.dispose();  
+    _authenticationRes.dispose();
   }
-
+  
   @override
   Widget build(BuildContext context) {
     return RepositoryProvider.value(

@@ -56,7 +56,7 @@ class _LoginPage extends State<LoginPage> {
     return RepositoryProvider.value(
       value: _processLoginValue,
       child: BlocProvider(
-          create: (context) => 
+          create: (context) =>
               LoginProcessBloc(processLogin: _processLoginValue),
           child: MaterialApp(
               navigatorKey: _navigatorKey,
@@ -66,7 +66,7 @@ class _LoginPage extends State<LoginPage> {
                     switch (state.status) {
                       case ProcessLoginStatus.forgot:
                         // Navigator.of(context).push(ForgotPasswordPage.route());
-                        _navigator.pushAndRemoveUntil<void>(
+                        _navigator.pushAndRemoveUntil(
                             ForgotPasswordPage.route(), (route) => false);
                         break;
                       case ProcessLoginStatus.renewPass:
@@ -87,8 +87,7 @@ class _LoginPage extends State<LoginPage> {
   }
 }
 
-class 
-TotalLoginPage extends StatefulWidget {
+class TotalLoginPage extends StatefulWidget {
   //      static Route<void> route() {
   //   return MaterialPageRoute(
   //     builder: (context) => ForgotPasswordPage(),
@@ -96,12 +95,27 @@ TotalLoginPage extends StatefulWidget {
   // }
 
   static Route<void> route() {
-    return MaterialPageRoute(builder: (context) => TotalLoginPage());
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => TotalLoginPage(),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        const begin = Offset(-1, 0.0);
+        const end = Offset.zero;
+        const curve = Curves.ease;
+
+        var tween =
+            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+        return SlideTransition(
+          position: animation.drive(tween),
+          child: child,
+        );
+      },
+    );
+    // return MaterialPageRoute(builder: (context) => TotalLoginPage());
   }
 
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return _TotalLoginPage();
   }
 }

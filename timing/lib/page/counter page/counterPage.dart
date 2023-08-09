@@ -202,7 +202,7 @@ class CounterPage extends StatelessWidget {
                   children: [
                     ShowTime(),
                     Container(
-                        margin: EdgeInsets.all(20),
+                        margin: const EdgeInsets.all(20),
                         child: BlocBuilder<CounterBloc, CounterState>(
                           builder: (context, state) {
                             return Row(
