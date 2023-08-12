@@ -13,6 +13,7 @@ class ForgotPasswordPage extends StatefulWidget {
   const ForgotPasswordPage({super.key});
 
   static Route<void> route() {
+    
     return MaterialPageRoute(
       builder: (context) => ForgotPasswordPage(),
     );
@@ -20,7 +21,7 @@ class ForgotPasswordPage extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
+    // TODO: sssimplement createState
     return _ForgotPassword();
   }
 }

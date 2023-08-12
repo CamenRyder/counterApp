@@ -202,7 +202,7 @@ class ForgotAndSignUp extends StatelessWidget {
                         });
                         // Center(
                         //   child: CircularProgressIndicator(),
-                        // );
+                        // ) ;  
                       },
                       child: Text(
                         'forgot password?',
