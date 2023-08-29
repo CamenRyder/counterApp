@@ -57,8 +57,6 @@ try{
 }   catch (err) {
     failureCode(res); 
 }
-
-
 } 
 
 const changePassword = async (req,  res ) => {
